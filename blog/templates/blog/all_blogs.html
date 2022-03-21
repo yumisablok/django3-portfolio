@@ -1,0 +1,18 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<H1>This is Blog Page</h1>
+
+<h2>Written {{blogs.count}} blog{{blogs.count|pluralize}} </h2>
+
+{% for blog in blogs %}
+
+<!-- we have to go to detail url-->
+<a href="{% url 'blog:detail' blog.id %}"><h2>Title : {{blog.title}}</h2></a>
+<h5>Date : {{blog.date | date:'M d Y'|upper}}</h5>
+<p>Description : {{blog.description |striptags| truncatechars:100}}</p>
+
+{% endfor %}
+
+{% endblock %}
